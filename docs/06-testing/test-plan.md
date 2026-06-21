@@ -40,8 +40,3 @@ npm run test:coverage
 
 Ручная проверка на Android-эмуляторе: регистрация, поиск, профиль, избранное, привязка Riot ID.
 
-## Критерии приёмки
-
-- JaCoCo (service, controller, advice, security): **≥ 40%**
-- Jest (utils, constants): **≥ 40%**
-- Все автотесты проходят без ошибок
