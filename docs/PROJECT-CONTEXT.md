@@ -1,8 +1,5 @@
 # PROJECT CONTEXT — LoL Companion (курсовая ПИ)
 
-> **Назначение файла:** единая точка входа для агента/разработчика после очистки контекста чата.  
-> **Корень проекта:** `C:\Projects\lol-companion`
-
 ---
 
 ## 1. Цель проекта
@@ -172,7 +169,6 @@ cd backend
 # HTML: backend\build\reports\jacoco\test\html\index.html
 ```
 
-Порог **≥ 40%** по бизнес-слою (controller, service, security, advice; без DTO/entity/config и без `RiotApiClient`/`MatchService`).
 
 ### Mobile (Jest)
 
@@ -181,7 +177,6 @@ cd mobile
 npm run test:coverage
 ```
 
-Тесты утилит (`validation`, `riotAccount`, `specialSummoners`); порог **≥ 40%** по `src/utils` и `src/constants`.
 
 ---
 
@@ -208,9 +203,7 @@ npm run android
 | `RIOT_API_KEY` | Ключ Riot (`backend/.env`) |
 | `DB_PASSWORD` | Пароль PostgreSQL |
 | `JWT_SECRET` | Секрет JWT (мин. 32 символа) |
-| `EXPO_PUBLIC_API_URL` | `http://10.0.2.2:8080/api` для эмулятора |
-
-**Важно:** проект должен лежать в пути **без кириллицы** (например `C:\Projects\lol-companion`).
+| `EXPO_PUBLIC_API_URL` | `http://10.0.2.2:8080/api` для эмулятора 
 
 ---
 
