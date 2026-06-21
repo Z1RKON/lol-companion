@@ -24,9 +24,3 @@
 ## Изображения
 
 Все диаграммы и скриншоты: [images/](images/)
-
-## Быстрые ссылки
-
-- [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md) — контекст для разработки
-- [RIOT-API-SETUP.md](05-setup/RIOT-API-SETUP.md) — настройка Riot API
-- [Корневой README](../README.md) — установка и запуск
