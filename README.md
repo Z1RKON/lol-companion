@@ -1,7 +1,7 @@
 # LoL Companion
 
 **Автор:** Орлов Владимир Алексеевич  
-**Группа:** ПИЖ-б-о-23-2(1)  
+**Группа:** ПИЖ-б-о-23-2(2)  
 **Траектория:** В — Мобильная разработка (React Native + Spring Boot)  
 **Репозиторий:** https://github.com/Z1RKON/lol-companion
 
@@ -140,8 +140,6 @@ npm run android
 
 ![Распределение по времени](docs/images/git-punch-card.png)
 
-*Заглушка — замените скриншотом Punch Card из GitHub Insights.*
-
 ## Автор
 
-Орлов Владимир Алексеевич — группа ПИЖ-б-о-23-2(1), orlov1771@yandex.ru, GitHub: [Z1RKON](https://github.com/Z1RKON)
+Орлов Владимир Алексеевич — группа ПИЖ-б-о-23-2(2), orlov1771@yandex.ru, GitHub: [Z1RKON](https://github.com/Z1RKON)
