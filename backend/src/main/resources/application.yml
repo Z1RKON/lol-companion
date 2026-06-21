@@ -1,0 +1,114 @@
+spring:
+  application:
+    name: lol-companion-api
+  
+  # Конфигурация PostgreSQL БД
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lol_companion_db
+    username: postgres
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate # Используем Flyway для миграций вместо Hibernate auto DDL
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          batch_size: 20
+          fetch_size: 50
+  
+  # Flyway для миграций БД
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    enabled: true
+
+# ============================================================================
+# Конфигурация Riot Games API (Правило 4: Безопасность секретов)
+# ============================================================================
+riot:
+  api:
+    # Правило 4: ключ только из переменной окружения
+    key: ${RIOT_API_KEY:dev-key-placeholder}
+    
+    # Региональный URL для эндпоинтов профилей и лиги
+    # На продакшене может различаться в зависимости от региона
+    regional-url: https://ru.api.riotgames.com
+    
+    # Платформенный URL для эндпоинтов матчей
+    # Используется для получения ID матчей и деталей матчей
+    platform-url: https://europe.api.riotgames.com
+    
+    # Дефолтный регион для поиска игроков
+    default-region: EUW1
+    
+    # Таймауты для HTTP запросов (в миллисекундах)
+    connect-timeout: 10000  # 10 сек
+    read-timeout: 15000    # 15 сек
+    
+    # TTL кэша для данных Summoner (в минутах)
+    # ✅ ТРЕБОВАНИЕ: Cache-Aside паттерн с 10-минутным TTL
+    # После этого времени данные считаются устаревшими и обновляются из API
+    cache-ttl-minutes: 10
+
+# ============================================================================
+# Конфигурация логирования
+# ============================================================================
+logging:
+  level:
+    root: INFO
+    com.lolcompanion: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
+  
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  
+  file:
+    name: logs/lol-companion-api.log
+    max-size: 10MB
+    max-history: 10
+
+# ============================================================================
+# Конфигурация Spring Boot сервера
+# ============================================================================
+server:
+  port: 8080
+  # Доступ с телефона в Expo Go по IP в локальной сети
+  address: 0.0.0.0
+  servlet:
+    context-path: /api
+  compression:
+    enabled: true
+    min-response-size: 1024
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
+
+# ============================================================================
+# Дополнительные конфигурации
+# ============================================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# JWT конфигурация (если используется Spring Security)
+app:
+  jwt:
+    secret: ${JWT_SECRET:your-secret-key-change-in-production-min-32-chars!!}
+    expiration-ms: 86400000  # 24 часа

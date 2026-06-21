@@ -1,0 +1,94 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'jacoco'
+}
+
+group = 'com.lolcompanion'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    jjwtVersion = '0.12.5'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
+
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-database-postgresql'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+jacoco {
+    toolVersion = '0.8.12'
+}
+
+def jacocoClassFilter = {
+    sourceSets.main.output.asFileTree.matching {
+        exclude '**/dto/**'
+        exclude '**/entity/**'
+        exclude '**/config/**'
+        exclude '**/repository/**'
+        exclude '**/LolCompanionApplication.class'
+        exclude '**/RiotApiClient.class'
+        exclude '**/MatchService.class'
+        exclude '**/JwtAuthenticationFilter.class'
+        exclude '**/SecurityConfig.class'
+    }
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+        html.outputLocation = layout.buildDirectory.dir('reports/jacoco/test/html')
+    }
+    classDirectories.setFrom(jacocoClassFilter())
+}
+
+jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
+    classDirectories.setFrom(jacocoClassFilter())
+    violationRules {
+        rule {
+            element = 'BUNDLE'
+            limit {
+                counter = 'INSTRUCTION'
+                minimum = 0.40
+            }
+        }
+    }
+}
+
+tasks.named('check') {
+    dependsOn jacocoTestCoverageVerification
+}

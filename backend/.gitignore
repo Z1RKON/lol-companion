@@ -1,0 +1,21 @@
+# Gradle wrapper — не коммитить локальный кэш
+.gradle/
+
+# Сборка
+build/
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Секреты
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.properties
+
+logs/
+*.log

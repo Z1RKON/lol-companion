@@ -1,0 +1,57 @@
+# Курсовая записка и сгенерированные материалы (не исходный код)
+docs/07-report/
+
+# Чужие/устаревшие артефакты внутри mobile (не LoL Companion)
+mobile/backend/
+mobile/web/
+mobile/server/
+
+# Dependencies
+node_modules/
+mobile/node_modules/
+
+# Build outputs
+backend/build/
+backend/.gradle/
+mobile/.gradle/
+mobile/.tmp/
+mobile/android/.gradle/
+mobile/android/app/build/
+mobile/android/build/
+mobile/dist/
+mobile/.expo/
+
+# Test coverage reports
+mobile/coverage/
+backend/build/reports/
+
+# Secrets
+.env
+.env.*
+!.env.example
+backend/.env
+mobile/.env
+backend/application-local.yml
+backend/application-local.properties
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+backend/logs/
+mobile/build-last.log
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Temp
+*.tmp
+*.bak
