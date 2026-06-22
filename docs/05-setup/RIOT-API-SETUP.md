@@ -346,10 +346,9 @@ time curl "http://localhost:8080/api/summoner/Summoner#TAG" > /dev/null
 
 ## 📚 Дополнительная документация
 
-- **Mediator слой:** [docs/04-architecture/mediator-layer.md](../docs/04-architecture/mediator-layer.md)
-- **Обработка ошибок:** [docs/04-architecture/error-handling.md](../docs/04-architecture/error-handling.md)
-- **Foundation слой:** [docs/03-architecture/foundation-layer.md](../docs/03-architecture/foundation-layer.md)
-- **Use Cases:** [docs/02-requirements/use-cases.md](../docs/02-requirements/use-cases.md)
+- **PCMEF слои:** [docs/02-architecture/pcmef-layers.md](../02-architecture/pcmef-layers.md)
+- **Обработка ошибок:** `backend/.../GlobalExceptionHandler.java`
+- **Use Cases:** [docs/01-requirements/use-cases-detailed.md](../01-requirements/use-cases-detailed.md)
 
 ---
 

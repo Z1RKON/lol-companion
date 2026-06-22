@@ -112,3 +112,11 @@ app:
   jwt:
     secret: ${JWT_SECRET:your-secret-key-change-in-production-min-32-chars!!}
     expiration-ms: 86400000  # 24 часа
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+  show-actuator: false

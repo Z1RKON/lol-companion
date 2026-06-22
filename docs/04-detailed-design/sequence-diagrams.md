@@ -22,6 +22,13 @@
 
 ## UC-003: Аутентификация
 
-1. POST `/auth/login` → JwtService.generateToken
-2. Mobile сохраняет токен в AsyncStorage
-3. Axios interceptor добавляет `Authorization: Bearer`
+![Sequence auth](../images/fig-18-seq-auth.png)
+
+Рисунок 18 — Вход пользователя (JWT)
+
+1. POST `/auth/login` → AuthService.login
+2. BCrypt.matches → JwtService.generateToken
+3. Mobile сохраняет токен в AsyncStorage
+4. Axios interceptor добавляет `Authorization: Bearer`
+
+Спецификация методов: [method-specifications.md](method-specifications.md)

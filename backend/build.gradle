@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.3.0'
     id 'io.spring.dependency-management' version '1.1.5'
     id 'jacoco'
+    id 'checkstyle'
 }
 
 group = 'com.lolcompanion'
@@ -35,6 +36,8 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation 'org.flywaydb:flyway-database-postgresql'
     runtimeOnly 'org.postgresql:postgresql'
+
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -91,4 +94,9 @@ jacocoTestCoverageVerification {
 
 tasks.named('check') {
     dependsOn jacocoTestCoverageVerification
+}
+
+checkstyle {
+    toolVersion = '10.12.5'
+    configFile = file('config/checkstyle/checkstyle.xml')
 }

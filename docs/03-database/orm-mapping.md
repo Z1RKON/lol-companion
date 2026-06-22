@@ -24,4 +24,4 @@
 
 Связанные сущности не загружаются до обращения (`FetchType.LAZY`).
 
-Детали Foundation: [../03-architecture/foundation-layer.md](../03-architecture/foundation-layer.md)
+Детали ORM и репозиториев: [orm-mapping.md](orm-mapping.md), [../05-implementation/structure.md](../05-implementation/structure.md)

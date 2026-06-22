@@ -68,6 +68,6 @@ LoL Companion — мобильный компаньон для League of Legends
 | Атрибут | Цель | Проверка |
 |---------|------|----------|
 | Покрытие тестами | ≥ 40% | JaCoCo, Jest |
-| Соответствие PCMEF | 100% | [COMPLIANCE-AUDIT](../06-checklist/COMPLIANCE-AUDIT.md) |
+| Соответствие PCMEF | 100% | [COMPLIANCE-AUDIT](../12-final-report/compliance/COMPLIANCE-AUDIT.md) |
 
 Слои backend: [pcmef-layers.md](pcmef-layers.md), [interfaces.md](interfaces.md)

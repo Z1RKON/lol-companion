@@ -40,3 +40,11 @@ npm run test:coverage
 
 Ручная проверка на Android-эмуляторе: регистрация, поиск, профиль, избранное, привязка Riot ID.
 
+## Статический анализ
+
+| Компонент | Инструмент | Команда |
+|-----------|------------|---------|
+| Backend | Checkstyle 10.12.5 | `.\gradlew.bat checkstyleMain` |
+| Mobile | ESLint 9 | `npm run lint` |
+
+Отчёт: [static-analysis-report.md](static-analysis-report.md)

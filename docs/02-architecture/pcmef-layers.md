@@ -35,5 +35,4 @@ Foundation (UserRepository, SummonerRepository, MatchRepository, config)
 
 **Запрещено:** Controller → RiotApiClient; Entity → Repository.
 
-Детали Foundation: [../03-architecture/foundation-layer.md](../03-architecture/foundation-layer.md)  
-Детали Mediator: [../03-architecture/mediator-layer.md](../03-architecture/mediator-layer.md)
+Детали слоёв: [pcmef-layers.md](pcmef-layers.md), [../05-implementation/structure.md](../05-implementation/structure.md)

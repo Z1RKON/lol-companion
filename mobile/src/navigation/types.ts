@@ -35,8 +35,10 @@ export type MatchDetailScreenProps = NativeStackScreenProps<
   'MatchDetail'
 >;
 
+/* eslint-disable @typescript-eslint/no-namespace, @typescript-eslint/no-empty-object-type -- React Navigation */
 declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList {}
   }
 }
+/* eslint-enable @typescript-eslint/no-namespace, @typescript-eslint/no-empty-object-type */

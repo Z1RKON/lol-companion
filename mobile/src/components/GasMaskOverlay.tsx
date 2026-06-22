@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Easing, Image, StyleSheet } from 'react-native';
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports -- React Native asset
 const GAS_MASK_IMAGE = require('../../assets/gas-mask.png');
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);

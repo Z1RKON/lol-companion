@@ -257,6 +257,6 @@ flowchart TD
 
 ## Связанные документы
 
-- [Бизнес-глоссарий](../01-business-model/glossary.md)
-- [Слой Foundation](../03-architecture/foundation-layer.md)
+- [Бизнес-глоссарий](../00-project-charter/glossary.md)
+- [Спецификация методов](../04-detailed-design/method-specifications.md)
 - [Настройка Riot API](../05-setup/RIOT-API-SETUP.md)

@@ -30,4 +30,4 @@
 
 ## Аудит PCMEF
 
-[../06-checklist/COMPLIANCE-AUDIT.md](../06-checklist/COMPLIANCE-AUDIT.md)
+[COMPLIANCE-AUDIT](../12-final-report/compliance/COMPLIANCE-AUDIT.md)

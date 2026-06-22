@@ -57,7 +57,8 @@ cd ..
 .\start-lol-companion.ps1
 ```
 
-API: `http://localhost:8080/api`
+API: `http://localhost:8080/api`  
+Swagger UI: `http://localhost:8080/api/swagger-ui/index.html`
 
 ### 3. Mobile
 
@@ -123,23 +124,19 @@ npm run android
 
 | Метрика | Значение |
 |---------|----------|
-| Всего коммитов | *обновите перед сдачей* |
-| Период | *дата первого — последнего коммита* |
+| Всего коммитов | 13 |
+| Период | 21.06.2026 20:19 — 21.06.2026 23:00 |
 | Покрытие JaCoCo | ≥ 40% (фактически ~61%) |
 | Покрытие Jest | ≥ 40% (фактически ~43%) |
-
-> Перед сдачей: GitHub → Insights → Contributors → сделайте скриншоты и сохраните в `docs/images/git-commit-activity.png`, `docs/images/git-punch-card.png`
 
 ### График активности
 
 ![Активность коммитов](docs/images/git-commit-activity.png)
 
-*Заглушка — замените скриншотом из GitHub Insights перед сдачей.*
-
-### Тепловая карта
+### Тепловая карта (Punch Card)
 
 ![Распределение по времени](docs/images/git-punch-card.png)
 
 ## Автор
 
-Орлов Владимир Алексеевич — группа ПИЖ-б-о-23-2(2), orlov1771@yandex.ru, GitHub: [Z1RKON](https://github.com/Z1RKON)
+Орлов Владимир Алексеевич — группа ПИЖ-б-о-23-2(1), orlov1771@yandex.ru, GitHub: [Z1RKON](https://github.com/Z1RKON)

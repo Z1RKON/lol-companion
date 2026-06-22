@@ -4,6 +4,16 @@
 
 **Базовый URL:** `http://localhost:8080/api`
 
+## OpenAPI / Swagger
+
+| Ресурс | URL |
+|--------|-----|
+| Swagger UI | http://localhost:8080/api/swagger-ui/index.html |
+| OpenAPI JSON (runtime) | http://localhost:8080/api/v3/api-docs |
+| OpenAPI YAML (репозиторий) | [openapi.yaml](openapi.yaml) |
+
+Подключено: `springdoc-openapi-starter-webmvc-ui` 2.6.0.
+
 ## Соответствие траектории В (8+ эндпоинтов)
 
 | Метод | Путь | Описание |
@@ -21,10 +31,6 @@
 | PUT | /auth/me/riot-account | Привязка Riot ID |
 | … | … | **Итого: 16 эндпоинтов** |
 
-## OpenAPI / Swagger
-
-Документация OpenAPI в проекте описана в REST-ENDPOINTS.md. Для добавления Swagger UI можно подключить `springdoc-openapi` (бонус траектории).
-
 ## Аутентификация
 
-Публичные: register, login. Остальные — заголовок `Authorization: Bearer <token>`.
+Публичные: register, login, swagger-ui, v3/api-docs. Остальные — заголовок `Authorization: Bearer <token>`.

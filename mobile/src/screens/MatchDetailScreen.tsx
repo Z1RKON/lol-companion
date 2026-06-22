@@ -15,7 +15,7 @@ import { useMatchDetailStore } from '../store/useMatchDetailStore';
 import { colors, elevation, spacing, typography } from '../theme/material';
 import type { MatchParticipantDTO } from '../types/api';
 import { getChampionNameRu } from '../utils/champions';
-import { formatGold, getItemIconUrl, getProfileIconUrl } from '../utils/validation';
+import { formatGold, getItemIconUrl } from '../utils/validation';
 import type { MatchDetailScreenProps } from '../navigation/types';
 
 function ItemSlots({

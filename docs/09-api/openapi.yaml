@@ -1,0 +1,250 @@
+openapi: 3.0.3
+info:
+  title: LoL Companion API
+  description: REST API мобильного компаньона League of Legends
+  version: 1.0.0
+  contact:
+    name: Орлов Владимир Алексеевич
+servers:
+  - url: http://localhost:8080/api
+    description: Локальная разработка
+tags:
+  - name: auth
+    description: Регистрация, вход, профиль пользователя
+  - name: summoner
+    description: Поиск призывателей, матчи, избранное
+paths:
+  /auth/register:
+    post:
+      tags: [auth]
+      summary: Регистрация пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: Успешная регистрация
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /auth/login:
+    post:
+      tags: [auth]
+      summary: Вход (JWT)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Токен выдан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /auth/me:
+    get:
+      tags: [auth]
+      security: [{ bearerAuth: [] }]
+      summary: Текущий пользователь
+      responses:
+        '200':
+          description: Профиль пользователя
+  /auth/me/riot-account:
+    put:
+      tags: [auth]
+      security: [{ bearerAuth: [] }]
+      summary: Привязать Riot ID
+      responses:
+        '200':
+          description: Аккаунт привязан
+    delete:
+      tags: [auth]
+      security: [{ bearerAuth: [] }]
+      summary: Отвязать Riot ID
+      responses:
+        '204':
+          description: Аккаунт отвязан
+  /auth/me/summoner:
+    get:
+      tags: [auth]
+      security: [{ bearerAuth: [] }]
+      summary: Профиль привязанного призывателя
+      responses:
+        '200':
+          description: SummonerResponse
+  /summoner/search:
+    get:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Поиск по Riot ID
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema: { type: string }
+        - name: region
+          in: query
+          schema: { type: string, default: RU }
+      responses:
+        '200':
+          description: Профиль найден
+  /summoner/by-name/{name}:
+    get:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Профиль по имени
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema: { type: string }
+        - name: region
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Профиль
+  /summoner/{puuid}:
+    get:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Профиль по PUUID
+      parameters:
+        - name: puuid
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Профиль
+  /summoner/{puuid}/matches:
+    get:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: История матчей
+      parameters:
+        - name: puuid
+          in: path
+          required: true
+          schema: { type: string }
+        - name: count
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+      responses:
+        '200':
+          description: Список матчей
+  /summoner/{puuid}/teammates:
+    get:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Частые союзники
+      parameters:
+        - name: puuid
+          in: path
+          required: true
+          schema: { type: string }
+        - name: matches
+          in: query
+          schema: { type: integer, default: 20 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20 }
+      responses:
+        '200':
+          description: Список союзников
+  /summoner/matches/{matchId}:
+    get:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Детали матча
+      parameters:
+        - name: matchId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Детали матча
+  /summoner/{puuid}/refresh:
+    post:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Обновить данные из Riot API
+      parameters:
+        - name: puuid
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Обновлённый профиль
+  /summoner/favorites:
+    get:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Список избранного
+      responses:
+        '200':
+          description: Избранные призыватели
+    post:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Добавить в избранное
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [puuid]
+              properties:
+                puuid: { type: string }
+      responses:
+        '201':
+          description: Добавлено
+  /summoner/favorites/{summonerId}:
+    delete:
+      tags: [summoner]
+      security: [{ bearerAuth: [] }]
+      summary: Удалить из избранного
+      parameters:
+        - name: summonerId
+          in: path
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '204':
+          description: Удалено
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    RegisterRequest:
+      type: object
+      required: [username, email, password]
+      properties:
+        username: { type: string, minLength: 3 }
+        email: { type: string, format: email }
+        password: { type: string, minLength: 8 }
+    LoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username: { type: string }
+        password: { type: string }
+    AuthResponse:
+      type: object
+      properties:
+        token: { type: string }
+        type: { type: string, example: Bearer }
+        expiresIn: { type: integer }
+        user: { type: object }

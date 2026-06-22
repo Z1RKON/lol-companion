@@ -46,5 +46,5 @@
 
 ## Связанные документы
 
-- [Системные прецеденты (Use Cases)](../02-requirements/use-cases.md)
+- [Детализированные прецеденты](use-cases-detailed.md)
 - [Настройка Riot API](../05-setup/RIOT-API-SETUP.md)

@@ -32,6 +32,7 @@ LoL Companion — клиент-серверная система для игро
 
 - [IDEF0](idef0.md)
 - [SWOT](swot.md)
+- [ТЗ (ГОСТ 34.602)](../01-requirements/technical-specification.md)
 - [BUC](buc-diagram.md)
 - [Бизнес-классы](business-classes.md)
 - [Бизнес-глоссарий](glossary.md)

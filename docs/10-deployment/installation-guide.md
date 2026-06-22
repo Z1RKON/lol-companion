@@ -53,4 +53,4 @@ npm run android
 2. Войти
 3. Найти призывателя по Riot ID (формат `Player#TAG`)
 
-Подробнее: [RIOT-API-SETUP.md](../05-setup/RIOT-API-SETUP.md)
+Подробнее: [RIOT-API-SETUP.md](../05-setup/RIOT-API-SETUP.md), [admin-guide.md](admin-guide.md)
